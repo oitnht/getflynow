@@ -14,7 +14,7 @@ export default function VisaChecker() {
   const [toCountry, setToCountry] = useState("");
   const [isChecking, setIsChecking] = useState(false);
 
-  const handleCheck = async (e: React.FormEvent) => {
+  const handleCheck = async (e) => {
     e.preventDefault();
     if (!fromCountry || !toCountry) return;
     
@@ -27,7 +27,7 @@ export default function VisaChecker() {
   // Now using CountrySelector component with search functionality for all 195+ countries
 
   // Dummy visa data based on country combinations
-  const getVisaRequirement = (from: string, to: string) => {
+  const getVisaRequirement = (from, to) => {
     const visaFree = ['us-uk', 'us-ca', 'uk-de', 'de-fr', 'au-uk', 'ca-us'];
     const visaRequired = ['us-cn', 'in-us', 'cn-us', 'br-us', 'us-in'];
     const eVisa = ['us-in', 'uk-in', 'au-in', 'ca-in'];
@@ -46,7 +46,7 @@ export default function VisaChecker() {
   };
 
   // Comprehensive embassy/official travel information links
-  const embassyLinks: { [key: string]: string } = {
+  const embassyLinks = {
     // Major countries with dedicated travel info sites
     us: "https://travel.state.gov/",
     gb: "https://www.gov.uk/foreign-travel-advice", 
@@ -115,7 +115,7 @@ export default function VisaChecker() {
   };
 
   // Function to get embassy link or fallback to generic search
-  const getEmbassyLink = (countryCode: string, countryName: string) => {
+  const getEmbassyLink = (countryCode, countryName) => {
     return embassyLinks[countryCode] || `https://www.google.com/search?q=${encodeURIComponent(countryName + ' embassy official travel information')}`;
   };
 
