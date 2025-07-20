@@ -1,7 +1,22 @@
-[[plugins]]
-package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-  publish = "dist"
+[build]
+  base = "."
+  publish = "dist/public"
+  command = "npm run build"
 
-[[plugins]]
-package = "@netlify/plugin-cache"
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "npm run dev"
+  port = 5000
+  publish = "dist/public"
