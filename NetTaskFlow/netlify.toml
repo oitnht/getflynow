@@ -2,11 +2,6 @@
 package = "@netlify/plugin-nextjs"
   [plugins.inputs]
   publish = "dist"
-  
-[[plugins]]
-package = "netlify-plugin-check-node-version"
-  [plugins.inputs]
-  node_versions = ">= 14"
-  
+
 [[plugins]]
 package = "@netlify/plugin-cache"
