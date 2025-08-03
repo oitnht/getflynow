@@ -1,30 +1,23 @@
-import { generateTripItinerary } from "../../server/services/gemini.ts";
+import { generateTripItinerary } from "../../server/services/gemini.ts"; // Adjust path as needed
 
-export default async function handler(event: any) {
+export default async function handler(req: Request) {
   try {
-    if (event.httpMethod !== "POST") {
-      return {
-        statusCode: 405,
-        body: JSON.stringify({ error: "Method Not Allowed" }),
-        headers: { "Content-Type": "application/json" },
-      };
-    }
+    const body = await req.json();
 
-    const tripData = JSON.parse(event.body || "{}");
+    const result = await generateTripItinerary(body);
 
-    const result = await generateTripItinerary(tripData);
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify(result),
-      headers: { "Content-Type": "application/json" },
-    };
-  } catch (error: any) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: error.message }),
-      headers: { "Content-Type": "application/json" },
-    };
+    return new Response(JSON.stringify(result), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (err: any) {
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 }
-
