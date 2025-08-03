@@ -86,7 +86,7 @@ export default function TermsOfService() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Contact Information</h2>
               <p className="text-gray-700">
-                For questions about these terms, contact us at: legal@getflynow.com
+                For questions about these terms, contact us at: oitnht@gmail.com
               </p>
             </section>
           </div>
