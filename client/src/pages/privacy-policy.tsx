@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Contact Us</h2>
               <p className="text-gray-700">
-                For privacy concerns, contact us at: privacy@getflynow.com
+                For privacy concerns, contact us at: oitnht@gmail.com
               </p>
             </section>
           </div>
